@@ -25,6 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //asd
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            hp -= 10;
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+        Debug.Log(hp);
     }
 }
