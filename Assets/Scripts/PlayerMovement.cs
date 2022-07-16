@@ -38,6 +38,5 @@ public class PlayerMovement : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        Debug.Log(hp);
     }
 }

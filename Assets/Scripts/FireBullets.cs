@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBullets : MonoBehaviour
+public class FireBullets : MonoBehaviour, Weapon
 {
 
     public GameObject bulletPrefab;
@@ -11,12 +11,6 @@ public class FireBullets : MonoBehaviour
     private float lastTimeFire;
     public float bulletForce = 20f;
     private bool canFire;
-
-    public bool isLaser;
-
-    public LineRenderer laser;
-
-    public float laserDistance = 1000f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,21 +27,14 @@ public class FireBullets : MonoBehaviour
         {
             if (Input.GetButton("Fire1") && canFire)
             {
-                Shoot();
-            }
-            else
-            {
-                if (laser)
-                {
-                    laser.enabled = false;
-                }
+                Attack();
             }
         }
         else
         {
             if (Input.GetButtonDown("Fire1") && canFire)
             {
-                Shoot();
+                Attack();
             }
         }
 
@@ -58,33 +45,14 @@ public class FireBullets : MonoBehaviour
         }
     }
 
-    void Shoot()
-    {
-        if (!isLaser)
-        {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(transform.right * bulletForce);
 
-            canFire = false;
-            lastTimeFire = Time.time;
-        }
-        else
-        {
-            laser.enabled = true;
-            laser.SetPosition(0, transform.position);
-       
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, laserDistance);
-            if (hit.collider != null)
-            {
-                laser.SetPosition(1, hit.point);
-            }
-            else
-            {
-                laser.SetPosition(1, transform.right * laserDistance);
-            }
-            
-        }
-        
+    public void Attack()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.right * bulletForce);
+
+        canFire = false;
+        lastTimeFire = Time.time;
     }
 }

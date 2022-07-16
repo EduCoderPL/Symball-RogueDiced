@@ -6,7 +6,8 @@ public class BulletMovement : MonoBehaviour
 {
     public float lifeTime = 5f;
     public GameObject hitEffect;
-    // Start is called before the first frame update
+
+    public bool destroyAfterEnemyTouch;
     void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -18,7 +19,7 @@ public class BulletMovement : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Wall"))
         {
@@ -29,13 +30,13 @@ public class BulletMovement : MonoBehaviour
         {
             EnemyMovement temp = collision.gameObject.GetComponent<EnemyMovement>();
             temp.hp -= 10;
-            if (temp.hp <= 0)
-            {
-                Destroy(collision.gameObject);
-                Interface.points += 100;
-            }
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+
+            if (destroyAfterEnemyTouch)
+            {
+                Destroy(gameObject);
+            }
+            
         }
 
     }

@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
     public float enemySpeed = 0.1f;
-    public int hp = 100;
+    public float hp = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +24,12 @@ public class EnemyMovement : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         transform.Translate(Vector3.right * Time.deltaTime * enemySpeed);
+
+
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            Interface.points += 100;
+        }
     }
 }

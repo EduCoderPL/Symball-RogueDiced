@@ -132,7 +132,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 5
   hitEffect: {fileID: 2394702600697488934, guid: ab4785dae2a3c3d4d8f7354adbd0a4e6, type: 3}
+  destroyAfterEnemyTouch: 1
 --- !u!1 &8719822553909468896
 GameObject:
   m_ObjectHideFlags: 0
