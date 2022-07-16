@@ -12,6 +12,7 @@ public class FireBullets : MonoBehaviour, Weapon
     public float bulletForce = 20f;
     private bool canFire;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,5 +55,14 @@ public class FireBullets : MonoBehaviour, Weapon
 
         canFire = false;
         lastTimeFire = Time.time;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            Rigidbody2D enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
+            enemyRB.AddForce(transform.right * 10000);
+        }
     }
 }

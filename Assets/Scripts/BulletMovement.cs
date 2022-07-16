@@ -7,6 +7,8 @@ public class BulletMovement : MonoBehaviour
     public float lifeTime = 5f;
     public GameObject hitEffect;
 
+    public float damage = 10;
+    public float explosionForce = 1000;
     public bool destroyAfterEnemyTouch;
     void Start()
     {
@@ -29,8 +31,12 @@ public class BulletMovement : MonoBehaviour
         if (collision.transform.CompareTag("Enemy"))
         {
             EnemyMovement temp = collision.gameObject.GetComponent<EnemyMovement>();
-            temp.hp -= 10;
+            temp.hp -= damage;
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+            Rigidbody2D enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
+            enemyRB.AddForce(transform.right * explosionForce);
+
 
             if (destroyAfterEnemyTouch)
             {

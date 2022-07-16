@@ -162,6 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeTime: 5
   hitEffect: {fileID: 2394702600697488934, guid: ab4785dae2a3c3d4d8f7354adbd0a4e6, type: 3}
+  damage: 10
+  explosionForce: 500
   destroyAfterEnemyTouch: 1
 --- !u!1 &8719822553909468896
 GameObject:
