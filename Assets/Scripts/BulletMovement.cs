@@ -32,6 +32,7 @@ public class BulletMovement : MonoBehaviour
             if (temp.hp <= 0)
             {
                 Destroy(collision.gameObject);
+                Interface.points += 100;
             }
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
