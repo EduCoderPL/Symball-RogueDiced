@@ -25,6 +25,7 @@ public class WeaponAiming : MonoBehaviour
         if (Input.GetKeyDown("2")) setWeapon(1);
         if (Input.GetKeyDown("3")) setWeapon(2);
         if (Input.GetKeyDown("4")) setWeapon(3);
+        if (Input.GetKeyDown("5")) setWeapon(4);
     }
 
     private void FixedUpdate()

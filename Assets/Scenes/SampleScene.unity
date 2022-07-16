@@ -1006,6 +1006,7 @@ MonoBehaviour:
   - {fileID: 1552535883053523490, guid: 0a1958887e9bfe24c96edac715514d7e, type: 3}
   - {fileID: 1552535883053523490, guid: 66218e9fd0e75bc46802bd7a40e7536f, type: 3}
   - {fileID: 1552535883053523490, guid: e423fc8457bb4784bb708addacce78ea, type: 3}
+  - {fileID: 1552535883053523490, guid: 9fb958e7395ae464fa384790a97a7301, type: 3}
   cam: {fileID: 519420031}
   weapon: {fileID: 0}
 --- !u!1001 &1009135969
