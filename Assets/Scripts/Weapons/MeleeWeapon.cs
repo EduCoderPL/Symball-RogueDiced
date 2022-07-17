@@ -64,7 +64,7 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     IEnumerator StopAttack()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.position = startPoint.position;
+        transform.position = startPoint.position + startPoint.up * -0.3f;
         weaponCollider.enabled = false;
         
     }

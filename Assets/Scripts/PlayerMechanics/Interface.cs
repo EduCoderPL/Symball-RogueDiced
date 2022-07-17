@@ -26,7 +26,7 @@ public class Interface : MonoBehaviour
     void Update()
     {
         textPoints.text = "Score: " + Convert.ToInt32(points);
-        textHp.text = "HP: " + PlayerMovement.hp;
+        textHp.text = "HP: " + Convert.ToInt32(PlayerMovement.hp);
     }
 
 }

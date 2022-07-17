@@ -51,7 +51,7 @@ public class WeaponAiming : MonoBehaviour
     {
         Destroy(weapon);
         GameObject temp = listOfWeapons[number];
-        weapon = Instantiate(temp, transform.position + transform.right * 0.4f, transform.rotation);
+        weapon = Instantiate(temp, transform.position + transform.right * 0.4f + transform.up * -0.3f, transform.rotation);
         weapon.transform.SetParent(transform);
         delayedRotation = number == 5;
 
