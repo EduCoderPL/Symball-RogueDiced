@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -18,11 +19,29 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(target!= null)
+        {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 centerPosition = target.position + (mousePosition - target.position) * centerCoefficient;
-        Vector2 randomShakeVector = new Vector2(Random.Range(-randShakeCoef, randShakeCoef), Random.Range(-randShakeCoef, randShakeCoef));
-        Vector3 newPosition = new Vector3(centerPosition.x + randomShakeVector.x, centerPosition.y + randomShakeVector.y, -10);
+            Vector3 centerPosition = target.position + (mousePosition - target.position) * centerCoefficient;
+            Vector2 randomShakeVector = new Vector2(Random.Range(-randShakeCoef, randShakeCoef), Random.Range(-randShakeCoef, randShakeCoef));
+            Vector3 newPosition = new Vector3(centerPosition.x + randomShakeVector.x, centerPosition.y + randomShakeVector.y, -10);
 
-        transform.position = Vector3.Lerp(transform.position, newPosition, lerpCoefficient * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, newPosition, lerpCoefficient * Time.deltaTime);
+        }
+        else
+        {
+            StartCoroutine(BackToMenu());
+        }
+
+        if (Input.GetKeyDown("r"))
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    IEnumerator BackToMenu()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(0);
     }
 }

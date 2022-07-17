@@ -29,9 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (hp <= 0)
         {
-            Destroy(gameObject.GetComponent<Rigidbody2D>());
-            Destroy(transform.GetChild(0).GetComponent<SpriteRenderer>());
-            StartCoroutine(BackToMenu());
+            Destroy(gameObject);
 
         }
 
@@ -51,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dodgeCooldownTime);
         canDodge = true;
 
-
     }
     private void FixedUpdate()
     {
@@ -69,14 +66,4 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<AudioSource>().Play();
         }
     }
-
-
-    IEnumerator BackToMenu()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("MainMenu");
-    }
-
-
-
 }
