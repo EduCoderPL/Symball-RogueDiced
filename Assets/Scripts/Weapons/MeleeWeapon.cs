@@ -6,7 +6,7 @@ public class MeleeWeapon : MonoBehaviour, Weapon
 {
 
     public Transform startPoint;
-    private bool isAttacked;
+    public bool canAttack;
     public float damage = 20;
 
     public float attackTranslation = 1f;
@@ -16,11 +16,13 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     private Collider2D weaponCollider;
 
     public float explosionForce = 500;
+
+
     // Start is called before the first frame update
     void Start()
     {
         startPoint = transform.parent.transform;
-        isAttacked = false;
+        canAttack = true;
 
         weaponCollider = GetComponent<Collider2D>();
         weaponCollider.enabled = false;
@@ -29,22 +31,20 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !isAttacked)
+        if (Input.GetButtonDown("Fire1") && canAttack)
         {
             Attack();
             
-        }
-        else if (isAttacked)
-        {
-            Invoke("Cooldown", cooldownTime);
         }
     }    
     
     public void Attack()
     {
         transform.position += transform.right * attackTranslation;
-        isAttacked = true;
+        canAttack = false;
         weaponCollider.enabled = true;
+        StartCoroutine(StopAttack());
+        StartCoroutine(Cooldown());
 
     }
 
@@ -52,21 +52,25 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     {
         if (collision.transform.CompareTag("Enemy"))
         {
-            Debug.Log("Hit by Halberd");
             EnemyMovement enemy = collision.gameObject.GetComponent<EnemyMovement>();
             enemy.hp -= damage;
 
             Rigidbody2D enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            enemyRB.AddForce(transform.right * explosionForce);
+            enemyRB.AddForce(transform.right * explosionForce * (1 + enemyRB.velocity.magnitude/10));
 
         }
     }
 
-    void Cooldown()
+    IEnumerator StopAttack()
     {
-        isAttacked = false;
+        yield return new WaitForSeconds(0.1f);
         transform.position = startPoint.position;
         weaponCollider.enabled = false;
-
+        
+    }
+    IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        canAttack = true;
     }
 }

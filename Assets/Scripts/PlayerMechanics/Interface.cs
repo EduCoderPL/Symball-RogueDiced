@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Interface : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Interface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textPoints.text = "Score: " + points;
+        textPoints.text = "Score: " + Convert.ToInt32(points);
         textHp.text = "HP: " + PlayerMovement.hp;
     }
 

@@ -184,9 +184,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPoint: {fileID: 0}
-  damage: 30
+  canAttack: 0
+  damage: 50
   attackTranslation: 1.5
-  cooldownTime: 0.5
+  cooldownTime: 1
   explosionForce: 1000
 --- !u!61 &5360865992111903985
 BoxCollider2D:

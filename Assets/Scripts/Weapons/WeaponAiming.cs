@@ -53,7 +53,7 @@ public class WeaponAiming : MonoBehaviour
         GameObject temp = listOfWeapons[number];
         weapon = Instantiate(temp, transform.position + transform.right * 0.4f, transform.rotation);
         weapon.transform.SetParent(transform);
-        delayedRotation = number == 4;
+        delayedRotation = number == 5;
 
     }
 

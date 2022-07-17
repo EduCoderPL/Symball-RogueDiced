@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
 
-    public static int hp = 100;
+    public static float hp = 100;
 
-    public float kickBackForce;
+    public float kickBackForce = 1000;
 
     Vector2 movement;
 
@@ -17,6 +17,11 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
 
     }
 
@@ -33,10 +38,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 kickBackVector = (transform.position - collision.transform.position).normalized;
             rb.AddForce(kickBackVector * kickBackForce);
             hp -= 10;
-            if (hp <= 0)
-            {
-                Destroy(gameObject);
-            }
         }
     }
+
 }
