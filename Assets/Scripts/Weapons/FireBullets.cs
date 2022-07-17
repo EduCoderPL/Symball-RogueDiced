@@ -13,6 +13,7 @@ public class FireBullets : MonoBehaviour, Weapon
     private bool canFire;
 
 
+
     // Start is called before the first frame update
     void Start()
     {

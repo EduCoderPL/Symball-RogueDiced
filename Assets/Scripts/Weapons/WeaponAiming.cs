@@ -36,9 +36,12 @@ public class WeaponAiming : MonoBehaviour
     {
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        if (numbers[0] != numbers[1])
+        {
+            if(Input.GetKeyDown("q")) setWeapon(0);
+            if (Input.GetKeyDown("e")) setWeapon(1);
+        }
 
-        if(Input.GetKeyDown("q")) setWeapon(0);
-        if (Input.GetKeyDown("e")) setWeapon(1);
 
     }
 

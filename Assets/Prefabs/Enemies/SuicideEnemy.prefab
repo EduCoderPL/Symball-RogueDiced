@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  enemySpeed: 300
+  enemySpeed: 1000
   hp: 200
 --- !u!61 &-3557278685210066877
 BoxCollider2D:

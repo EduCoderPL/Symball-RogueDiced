@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,8 +13,15 @@ public class PlayerMovement : MonoBehaviour
 
     public float kickBackForce = 1000;
 
+    private bool canDodge;
+    public float dodgeCooldownTime = 1f;
+
     Vector2 movement;
 
+    private void Start()
+    {
+        canDodge = true;
+    }
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -20,11 +29,30 @@ public class PlayerMovement : MonoBehaviour
 
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject.GetComponent<Rigidbody2D>());
+            Destroy(transform.GetChild(0).GetComponent<SpriteRenderer>());
+            StartCoroutine(BackToMenu());
+
+        }
+
+        if (Input.GetMouseButtonDown(1) && canDodge)
+        {
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
+            rb.AddForce(lookDir * 200f);
+            StartCoroutine(DodgeCooldown());
         }
 
     }
 
+    IEnumerator DodgeCooldown()
+    {
+        canDodge = false;
+        yield return new WaitForSeconds(dodgeCooldownTime);
+        canDodge = true;
+
+
+    }
     private void FixedUpdate()
     {
         //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -38,7 +66,17 @@ public class PlayerMovement : MonoBehaviour
             Vector2 kickBackVector = (transform.position - collision.transform.position).normalized;
             rb.AddForce(kickBackVector * kickBackForce);
             hp -= 10;
+            GetComponent<AudioSource>().Play();
         }
     }
+
+
+    IEnumerator BackToMenu()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
 
 }

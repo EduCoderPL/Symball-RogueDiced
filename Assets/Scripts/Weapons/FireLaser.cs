@@ -13,6 +13,8 @@ public class FireLaser : MonoBehaviour, Weapon
 
     public GameObject laserEnding;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +58,7 @@ public class FireLaser : MonoBehaviour, Weapon
             laser.SetPosition(1, transform.right * laserDistance);
         }
         laserEnding.SetActive(true);
+
         laserEnding.transform.position = laser.GetPosition(1);
     }
 }
