@@ -7,8 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
-    public Animator animator;
-
     public static float hp = 100;
 
     public float kickBackForce = 1000;
@@ -18,9 +16,11 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
-    private void Start()
+    void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         canDodge = true;
+        hp = 100;
     }
     void Update()
     {

@@ -273,7 +273,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 30
   rb: {fileID: 48103756}
-  animator: {fileID: 0}
   kickBackForce: 500
   dodgeCooldownTime: 1
 --- !u!61 &48103755
@@ -552,8 +551,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'HP: 100'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b3f26d50d4532074e94943215c797b82, type: 2}
+  m_sharedMaterial: {fileID: -4122194112011120029, guid: b3f26d50d4532074e94943215c797b82, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -928,8 +927,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Score:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b3f26d50d4532074e94943215c797b82, type: 2}
+  m_sharedMaterial: {fileID: -4122194112011120029, guid: b3f26d50d4532074e94943215c797b82, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
