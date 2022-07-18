@@ -13,6 +13,8 @@ public class FireLaser : MonoBehaviour, Weapon
 
     public GameObject laserEnding;
 
+    public AudioSource laserSound;
+
 
 
     // Start is called before the first frame update
@@ -20,6 +22,7 @@ public class FireLaser : MonoBehaviour, Weapon
     {
         laser.enabled = false;
         laserEnding.SetActive(false);
+        laserSound.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,11 +36,17 @@ public class FireLaser : MonoBehaviour, Weapon
         {
             laser.enabled = false;
             laserEnding.SetActive(false);
+            laserSound.Stop();
         }
     }    
     
     public void Attack()
     {
+        if (!laserSound.isPlaying)
+        {
+            laserSound.Play();
+        }
+
         laser.enabled = true;
         laser.SetPosition(0, transform.position);
 

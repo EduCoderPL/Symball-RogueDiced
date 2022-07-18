@@ -16,8 +16,8 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     private Collider2D weaponCollider;
 
     public float explosionForce = 500;
-    private AudioSource slashSound;
-
+    
+    private AudioSource[] sounds;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class MeleeWeapon : MonoBehaviour, Weapon
 
         weaponCollider = GetComponent<Collider2D>();
         weaponCollider.enabled = false;
-        slashSound = GetComponent<AudioSource>();
+        sounds = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +42,7 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     
     public void Attack()
     {
+        sounds[0].Play();
         transform.position += transform.right * attackTranslation;
         canAttack = false;
         weaponCollider.enabled = true;
@@ -59,7 +60,7 @@ public class MeleeWeapon : MonoBehaviour, Weapon
 
             Rigidbody2D enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
             enemyRB.AddForce(transform.right * explosionForce * (1 + enemyRB.velocity.magnitude/10));
-            slashSound.Play();
+            sounds[1].Play();
 
         }
     }
