@@ -26,13 +26,17 @@ public class Interface : MonoBehaviour
 
     public static int points;
     // Start is called before the first frame update
-    void Start()
+
+
+    void Awake()
     {
+        RogueDicedEvents.rollDice.AddListener(SetImages);
+
         textPoints = objectPoints.GetComponent<TextMeshProUGUI>();
         textHp = objectHp.GetComponent<TextMeshProUGUI>();
         textDice = objectDiceText.GetComponent<TextMeshProUGUI>();
         points = 0;
-        SetImages();
+        RogueDicedEvents.rollDice.Invoke();
     }
 
     // Update is called once per frame
@@ -49,6 +53,8 @@ public class Interface : MonoBehaviour
         }
     }
 
+    
+
     public void SetImages()
     {
         for (int i = 0; i<2; i++)
@@ -59,12 +65,6 @@ public class Interface : MonoBehaviour
         objectDiceText.SetActive(false);
 
     }
-
-    public void SetTextBefore()
-    {
-
-    }
-
 
 
 }

@@ -21,8 +21,9 @@ public class WeaponAiming : MonoBehaviour
 
     public Interface ui;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+
         numbers = new int[] { 1, 3 };
         StartCoroutine(RandomNumbersGo());
 
@@ -30,7 +31,7 @@ public class WeaponAiming : MonoBehaviour
         activeWeapons[0] = listOfWeapons[numbers[0] - 1];
         activeWeapons[1] = listOfWeapons[numbers[1] - 1];
 
-        setWeapon(0);
+        SetWeapon(0);
     }
 
     // Update is called once per frame
@@ -40,8 +41,8 @@ public class WeaponAiming : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         if (numbers[0] != numbers[1])
         {
-            if(Input.GetKeyDown("q")) setWeapon(0);
-            if (Input.GetKeyDown("e")) setWeapon(1);
+            if(Input.GetKeyDown(KeyCode.Q)) SetWeapon(0);
+            if (Input.GetKeyDown(KeyCode.E)) SetWeapon(1);
         }
 
 
@@ -63,7 +64,7 @@ public class WeaponAiming : MonoBehaviour
         
     }
 
-    void setWeapon(int number)
+    void SetWeapon(int number)
     {
         Destroy(weapon);
         GameObject temp = activeWeapons[number];
@@ -85,8 +86,8 @@ public class WeaponAiming : MonoBehaviour
                 numbers[i] = Random.Range(1, 7);
                 activeWeapons[i] = listOfWeapons[numbers[i] - 1];
             }
-            ui.SetImages();
-            setWeapon(Random.Range(0, 2));
+            RogueDicedEvents.rollDice.Invoke();
+            SetWeapon(Random.Range(0, 2));
 
         }
 

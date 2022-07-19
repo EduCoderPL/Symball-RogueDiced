@@ -55,13 +55,8 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     {
         if (collision.transform.CompareTag("Enemy"))
         {
-            EnemyMovement enemy = collision.gameObject.GetComponent<EnemyMovement>();
-            enemy.hp -= damage;
-
-            Rigidbody2D enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            enemyRB.AddForce(transform.right * explosionForce * (1 + enemyRB.velocity.magnitude/10));
+            RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, gameObject, damage, explosionForce));
             sounds[1].Play();
-
         }
     }
 

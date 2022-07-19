@@ -17,8 +17,9 @@ public class EnemyMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        RogueDicedEvents.hitEvent.AddListener(EnemyHit);
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (target == null)
         {
@@ -65,5 +66,15 @@ public class EnemyMovement : MonoBehaviour
         colorIndex = (colorIndex + 1) % 2;
 
         spriteRenderer.color = colorList[colorIndex];
+    }
+
+    void EnemyHit(HitEventData data)
+    {
+        if(gameObject == data.victim)
+        {
+            hp -= data.damage;
+            rb.AddForce(- transform.right * data.explosionForce * (1 + rb.velocity.magnitude / 10));
+        }
+        
     }
 }
