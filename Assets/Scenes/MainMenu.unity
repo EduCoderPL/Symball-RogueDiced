@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -12.18}
-  m_SizeDelta: {x: 302.58, y: 48.05}
+  m_AnchoredPosition: {x: 4.55e-13, y: -20}
+  m_SizeDelta: {x: 514.58, y: 77.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69997669
 MonoBehaviour:
@@ -294,8 +294,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -148.2}
-  m_SizeDelta: {x: 302.58, y: 48.05}
+  m_AnchoredPosition: {x: 0, y: -243}
+  m_SizeDelta: {x: 514.58, y: 77.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &71772867
 MonoBehaviour:
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 174437791}
   - component: {fileID: 174437790}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LogoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,8 +426,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -16, y: -110}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.000015259, y: -187}
+  m_SizeDelta: {x: 184.98, y: 184.98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174437790
 MonoBehaviour:
@@ -504,8 +504,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78.18}
-  m_SizeDelta: {x: 302.58, y: 48.05}
+  m_AnchoredPosition: {x: 0.0000076293945, y: -129.78001}
+  m_SizeDelta: {x: 514.58, y: 77.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223141923
 MonoBehaviour:
@@ -744,7 +744,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 2.1047654, y: 1.3853436}
+  m_Size: {x: 3.6190577, y: 2.123561}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -758,7 +758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342658776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.97, y: -22.1, z: -4048.0232}
+  m_LocalPosition: {x: 12.32, y: -6.71, z: -4048.0232}
   m_LocalScale: {x: 400, y: 400, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.2
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.2
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1120,8 +1120,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1222,7 +1222,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1366, y: 768}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1323,8 +1323,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 165.08, y: -158.21}
-  m_SizeDelta: {x: 359.83, y: 79.59}
+  m_AnchoredPosition: {x: 358, y: -252}
+  m_SizeDelta: {x: 521.58, y: 126.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875484807
 MonoBehaviour:
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.2
+  m_fontSize: 72
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1972,8 +1972,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.77, y: -11.945}
-  m_SizeDelta: {x: 761.55, y: 425.89}
+  m_AnchoredPosition: {x: 0, y: 88}
+  m_SizeDelta: {x: 1260.64, y: 502.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070204673
 MonoBehaviour:
@@ -1995,9 +1995,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The game was created by:\r\nFeniks - coding, coding, coding, our Unity
-    guru\r\nDZKC - Making everthing perfectly balanced, as all things should be;
-    particles apprentice; design\r\nAdiabat - Assets as a service (sprites), whinening
+  m_text: "The game was created by:\r\n\nFeniks - coding, coding, coding, our Unity
+    guru\r;\n\nDZKC - Making everthing perfectly balanced, as all things should be;
+    particles apprentice; design\r;\n\nAdiabat - Assets as a service (sprites), whinening
     team leader, idea\r\n\r\nNot there, but also in a team:\r\nlos ulamos - Music
     komposter\r\nPawe\u0142 - emotional support/damage (both)\nKangMeg - Emotional
     Support of Feniks"
@@ -2027,8 +2027,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

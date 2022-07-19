@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Interface : MonoBehaviour
 {
@@ -41,6 +42,11 @@ public class Interface : MonoBehaviour
         textHp.text = "HP: " + Convert.ToInt32(PlayerMovement.hp);
 
         textDice.text = "TIME TO NEXT ROLL: \n" + Mathf.Ceil(estimatedTimeToRoll - Time.time);
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void SetImages()
