@@ -58,7 +58,6 @@ public class FireLaser : MonoBehaviour, Weapon
             {
                 EnemyMovement enemy = hit.collider.GetComponent<EnemyMovement>();
                 enemy.hp -= damagePerSecond * Time.deltaTime;
-
             }
 
         }

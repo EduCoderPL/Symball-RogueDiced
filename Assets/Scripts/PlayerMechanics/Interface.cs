@@ -10,6 +10,7 @@ public class Interface : MonoBehaviour
 
     public GameObject objectPoints;
     public GameObject objectHp;
+    public GameObject objectDiceText;
 
     public Sprite[] diceImages;
     public Image[] actualDicesImage;
@@ -17,6 +18,9 @@ public class Interface : MonoBehaviour
 
     private TextMeshProUGUI textPoints;
     private TextMeshProUGUI textHp;
+    private TextMeshProUGUI textDice;
+
+    private float estimatedTimeToRoll;
 
 
     public static int points;
@@ -25,9 +29,9 @@ public class Interface : MonoBehaviour
     {
         textPoints = objectPoints.GetComponent<TextMeshProUGUI>();
         textHp = objectHp.GetComponent<TextMeshProUGUI>();
+        textDice = objectDiceText.GetComponent<TextMeshProUGUI>();
         points = 0;
         SetImages();
-
     }
 
     // Update is called once per frame
@@ -35,7 +39,8 @@ public class Interface : MonoBehaviour
     {
         textPoints.text = "Score: " + Convert.ToInt32(points);
         textHp.text = "HP: " + Convert.ToInt32(PlayerMovement.hp);
-        SetImages();
+
+        textDice.text = "TIME TO NEXT ROLL: \n" + Mathf.Ceil(estimatedTimeToRoll - Time.time);
     }
 
     public void SetImages()
@@ -44,7 +49,14 @@ public class Interface : MonoBehaviour
         {
             actualDicesImage[i].sprite = diceImages[WeaponAiming.numbers[i] - 1];
         }
-        
+        estimatedTimeToRoll = Time.time + WeaponAiming.timeToRandomize;
+        objectDiceText.SetActive(false);
+
+    }
+
+    public void SetTextBefore()
+    {
+
     }
 
 

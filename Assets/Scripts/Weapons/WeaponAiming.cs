@@ -17,7 +17,9 @@ public class WeaponAiming : MonoBehaviour
     public float rotationSpeed = 50f;
 
     public static int[] numbers;
-    public float timeToRandomize = 60f;
+    public static float timeToRandomize = 15f;
+
+    public Interface ui;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,14 +76,18 @@ public class WeaponAiming : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(timeToRandomize);
+            yield return new WaitForSeconds(timeToRandomize - 3);
+            ui.objectDiceText.SetActive(true);
+            yield return new WaitForSeconds(3);
+
             for (int i = 0; i < numbers.Length; i++)
             {
                 numbers[i] = Random.Range(1, 7);
                 activeWeapons[i] = listOfWeapons[numbers[i] - 1];
             }
+            ui.SetImages();
             setWeapon(Random.Range(0, 2));
-            
+
         }
 
     }
