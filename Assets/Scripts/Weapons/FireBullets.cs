@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBullets : MonoBehaviour, Weapon
+public class FireBullets : MonoBehaviour, IWeapon
 {
 
     public GameObject bulletPrefab;

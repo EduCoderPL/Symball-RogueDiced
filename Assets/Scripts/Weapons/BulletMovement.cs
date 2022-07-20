@@ -15,12 +15,6 @@ public class BulletMovement : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Wall"))
@@ -30,13 +24,8 @@ public class BulletMovement : MonoBehaviour
         }
         if (collision.transform.CompareTag("Enemy"))
         {
-            EnemyMovement temp = collision.gameObject.GetComponent<EnemyMovement>();
-            temp.hp -= damage;
+            RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, gameObject, damage, transform.right * explosionForce));
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-
-            Rigidbody2D enemyRB = collision.gameObject.GetComponent<Rigidbody2D>();
-            enemyRB.AddForce(transform.right * explosionForce);
-
 
             if (destroyAfterEnemyTouch)
             {

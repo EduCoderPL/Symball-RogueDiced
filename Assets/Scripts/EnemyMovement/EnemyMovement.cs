@@ -16,11 +16,13 @@ public class EnemyMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private Rigidbody2D rb;
+
+    public HitPoints hitPoints;
     // Start is called before the first frame update
     void Awake()
     {
-        RogueDicedEvents.hitEvent.AddListener(EnemyHit);
         spriteRenderer = GetComponent<SpriteRenderer>();
+        hitPoints = GetComponent<HitPoints>();
         if (target == null)
         {
             target = GameObject.Find("Player").transform;
@@ -37,18 +39,15 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 lookDir = target.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        rb.AddForce(transform.right * Time.deltaTime * enemySpeed);
-
-
-        if (hp <= 0) 
+        if(target!= null)
         {
-            Destroy(gameObject);
-            Interface.points += 100;
+            Vector2 lookDir = target.position - transform.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            rb.AddForce(transform.right * Time.deltaTime * enemySpeed);
         }
+        
 
         if (isHit)
         {
@@ -58,7 +57,16 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        isHit = true;
+        StartCoroutine(Mruganie());
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+        {
+            Vector2 kickBackVector = (collision.transform.position - transform.position).normalized;
+            RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, null, 10, kickBackVector));
+        }
     }
 
     void mrugaj()
@@ -68,13 +76,17 @@ public class EnemyMovement : MonoBehaviour
         spriteRenderer.color = colorList[colorIndex];
     }
 
-    void EnemyHit(HitEventData data)
+    public void EnemyHit(HitEventData data)
     {
-        if(gameObject == data.victim)
-        {
-            hp -= data.damage;
-            rb.AddForce(- transform.right * data.explosionForce * (1 + rb.velocity.magnitude / 10));
-        }
-        
+        hitPoints.TakeDamage(data.damage);
+        rb.AddForce(- transform.right * data.explosionForce * (1 + rb.velocity.magnitude / 10));      
+    }
+
+    private IEnumerator Mruganie()
+    {
+        isHit = true;
+        yield return new WaitForSeconds(2f);
+        isHit = false;
+        spriteRenderer.color = colorList[1];
     }
 }

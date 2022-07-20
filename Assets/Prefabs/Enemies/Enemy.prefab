@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -606344171988960566}
   - component: {fileID: -3557278685210066877}
   - component: {fileID: 5109618785262611752}
+  - component: {fileID: 1774757494930056984}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -102,6 +103,7 @@ MonoBehaviour:
   target: {fileID: 0}
   enemySpeed: 300
   hp: 100
+  hitPoints: {fileID: 1774757494930056984}
 --- !u!61 &-3557278685210066877
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +151,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1774757494930056984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669633227289770713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b1f108dd10fc49ac7f2d4da45fa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHP: 100

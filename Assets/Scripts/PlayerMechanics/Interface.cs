@@ -21,6 +21,10 @@ public class Interface : MonoBehaviour
     private TextMeshProUGUI textHp;
     private TextMeshProUGUI textDice;
 
+    public GameObject player;
+    private float playerHP;
+
+
     private float estimatedTimeToRoll;
 
 
@@ -31,19 +35,22 @@ public class Interface : MonoBehaviour
     void Awake()
     {
         RogueDicedEvents.rollDice.AddListener(SetImages);
-
+        RogueDicedEvents.rollDice.Invoke();
         textPoints = objectPoints.GetComponent<TextMeshProUGUI>();
         textHp = objectHp.GetComponent<TextMeshProUGUI>();
         textDice = objectDiceText.GetComponent<TextMeshProUGUI>();
         points = 0;
-        RogueDicedEvents.rollDice.Invoke();
+        playerHP = player.GetComponent<HitPoints>().GetHP();
+        
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         textPoints.text = "Score: " + Convert.ToInt32(points);
-        textHp.text = "HP: " + Convert.ToInt32(PlayerMovement.hp);
+        textHp.text = "HP: " + Convert.ToInt32(player ? player.GetComponent<HitPoints>().GetHP(): 0);
 
         textDice.text = "TIME TO NEXT ROLL: \n" + Mathf.Ceil(estimatedTimeToRoll - Time.time);
 

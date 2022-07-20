@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuicideBomberEnemy : MonoBehaviour
+public class SuicideBomberEnemy : MonoBehaviour, IDeathEffect
 {
     private EnemyMovement enemyMovement;
     public GameObject explosionParticle;
@@ -25,9 +25,12 @@ public class SuicideBomberEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((transform.position - enemyMovement.target.position).magnitude < explodeDistance)
+        if (enemyMovement.target != null)
         {
-            StartCoroutine(Explode());
+            if((transform.position - enemyMovement.target.position).magnitude < explodeDistance)
+            {
+                StartCoroutine(Explode());
+            }
         }
     }
 
@@ -58,8 +61,7 @@ public class SuicideBomberEnemy : MonoBehaviour
 
         foreach (Collider2D o in colliders)
         {
-            Rigidbody2D rb = o.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (o.TryGetComponent<Rigidbody2D>(out var rb))
             {
                 Vector2 distex = o.transform.position - transform.position;
                 if (distex.magnitude > 0)
@@ -69,7 +71,7 @@ public class SuicideBomberEnemy : MonoBehaviour
 
                     if (o.transform.CompareTag("Player"))
                     {
-                        PlayerMovement.hp -= (explosionForce / 80);
+                        o.transform.GetComponent<HitPoints>().TakeDamage(explosionForce / 80);
                     }
                 }
             }
@@ -79,5 +81,10 @@ public class SuicideBomberEnemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
+    public void Die()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Weapon
+public interface IWeapon
 {
     void Attack();
+}
 
+public interface IDeathEffect
+{
+    void Die();
 }

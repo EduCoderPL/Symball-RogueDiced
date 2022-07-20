@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeapon : MonoBehaviour, Weapon
+public class MeleeWeapon : MonoBehaviour, IWeapon
 {
 
     public Transform startPoint;
@@ -55,7 +55,7 @@ public class MeleeWeapon : MonoBehaviour, Weapon
     {
         if (collision.transform.CompareTag("Enemy"))
         {
-            RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, gameObject, damage, explosionForce));
+            RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, gameObject, damage, transform.right * explosionForce));
             sounds[1].Play();
         }
     }

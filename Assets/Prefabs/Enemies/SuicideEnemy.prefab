@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -606344171988960566}
   - component: {fileID: -3557278685210066877}
   - component: {fileID: 5109618785262611752}
+  - component: {fileID: 3915236317663595807}
   - component: {fileID: -2867707014591037547}
   m_Layer: 0
   m_Name: SuicideEnemy
@@ -103,6 +104,7 @@ MonoBehaviour:
   target: {fileID: 0}
   enemySpeed: 1000
   hp: 200
+  hitPoints: {fileID: 3915236317663595807}
 --- !u!61 &-3557278685210066877
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,6 +152,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3915236317663595807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669633227289770713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a0b1f108dd10fc49ac7f2d4da45fa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHP: 200
 --- !u!114 &-2867707014591037547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 2394702600697488934, guid: ab4785dae2a3c3d4d8f7354adbd0a4e6, type: 3}
-  radius: 10000
+  radius: 5
   explosionForceCoef: 5000
   explodeDistance: 3
   layerToHit:

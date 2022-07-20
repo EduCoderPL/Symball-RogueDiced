@@ -16,9 +16,9 @@ public class HitEventData
     public GameObject victim;
     public GameObject projectile;
     public float damage;
-    public float explosionForce;
+    public Vector2 explosionForce;
 
-    public HitEventData(GameObject victim, GameObject projectile, float damage, float explosionForce)
+    public HitEventData(GameObject victim, GameObject projectile, float damage, Vector2 explosionForce)
     {
         this.victim = victim;
         this.projectile = projectile;

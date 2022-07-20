@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireLaser : MonoBehaviour, Weapon
+public class FireLaser : MonoBehaviour, IWeapon
 {
 
     public LineRenderer laser;
