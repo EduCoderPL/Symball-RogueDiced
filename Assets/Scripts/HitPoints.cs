@@ -40,6 +40,7 @@ public class HitPoints : MonoBehaviour
         }
         else
         {
+            RogueDicedEvents.killEnemyEvent.Invoke();
             Destroy(gameObject);
         }
     }

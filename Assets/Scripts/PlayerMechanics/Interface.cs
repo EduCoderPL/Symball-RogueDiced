@@ -35,6 +35,7 @@ public class Interface : MonoBehaviour
     void Awake()
     {
         RogueDicedEvents.rollDice.AddListener(SetImages);
+        RogueDicedEvents.killEnemyEvent.AddListener(AddPoints);
         RogueDicedEvents.rollDice.Invoke();
         textPoints = objectPoints.GetComponent<TextMeshProUGUI>();
         textHp = objectHp.GetComponent<TextMeshProUGUI>();
@@ -71,6 +72,11 @@ public class Interface : MonoBehaviour
         estimatedTimeToRoll = Time.time + WeaponAiming.timeToRandomize;
         objectDiceText.SetActive(false);
 
+    }
+
+    public void AddPoints()
+    {
+        points += 100;
     }
 
 

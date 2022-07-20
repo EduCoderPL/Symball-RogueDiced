@@ -25,23 +25,16 @@ public class FireBullets : MonoBehaviour, IWeapon
     // Update is called once per frame
     void Update()
     {
-        if (isAutoFire)
+        if (canFire)
         {
-            if (Input.GetButton("Fire1") && canFire)
-            {
-                Attack();
-            }
-        }
-        else
-        {
-            if (Input.GetButtonDown("Fire1") && canFire)
+            if ((Input.GetButton("Fire1") && isAutoFire) || (Input.GetButtonDown("Fire1") && !isAutoFire))
             {
                 Attack();
             }
         }
 
 
-        if(Time.time > lastTimeFire + coolDown)
+        if(!canFire && Time.time > lastTimeFire + coolDown)
         {
             canFire = true;
         }

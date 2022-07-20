@@ -57,13 +57,4 @@ public class PlayerMovement : MonoBehaviour
         hitPoints.TakeDamage(10);
         GetComponent<AudioSource>().Play();
     }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.transform.CompareTag("Enemy"))
-        {
-            
-        }
-    }
 }

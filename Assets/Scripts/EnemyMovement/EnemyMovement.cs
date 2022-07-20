@@ -45,31 +45,31 @@ public class EnemyMovement : MonoBehaviour
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            rb.AddForce(transform.right * Time.deltaTime * enemySpeed);
+            rb.AddForce(enemySpeed * Time.deltaTime * transform.right);
         }
         
 
         if (isHit)
         {
-            mrugaj();
+            Blink();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        StartCoroutine(Mruganie());
+        StartCoroutine(BlinkingControl());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Player"))
         {
-            Vector2 kickBackVector = (collision.transform.position - transform.position).normalized;
+            Vector2 kickBackVector = transform.right;
             RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, null, 10, kickBackVector));
         }
     }
 
-    void mrugaj()
+    void Blink()
     {
         colorIndex = (colorIndex + 1) % 2;
 
@@ -79,10 +79,11 @@ public class EnemyMovement : MonoBehaviour
     public void EnemyHit(HitEventData data)
     {
         hitPoints.TakeDamage(data.damage);
-        rb.AddForce(- transform.right * data.explosionForce * (1 + rb.velocity.magnitude / 10));      
+        rb.velocity = Vector2.zero;
+        rb.AddForce(data.explosionForce);      
     }
 
-    private IEnumerator Mruganie()
+    private IEnumerator BlinkingControl()
     {
         isHit = true;
         yield return new WaitForSeconds(2f);

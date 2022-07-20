@@ -56,8 +56,7 @@ public class FireLaser : MonoBehaviour, IWeapon
             laser.SetPosition(1, hit.point);
             if (hit.collider.transform.CompareTag("Enemy"))
             {
-                EnemyMovement enemy = hit.collider.GetComponent<EnemyMovement>();
-                enemy.hp -= damagePerSecond * Time.deltaTime;
+                RogueDicedEvents.hitEvent.Invoke(new HitEventData(hit.collider.gameObject, null, damagePerSecond * Time.deltaTime, 1000 * Time.deltaTime * transform.right));
             }
 
         }

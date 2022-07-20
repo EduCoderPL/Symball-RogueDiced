@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public static class RogueDicedEvents
 {
     public static UnityEvent rollDice = new();
-    public static HitEvent hitEvent = new HitEvent();
+    public static HitEvent hitEvent = new();
+    public static UnityEvent killEnemyEvent  = new();
 }
 
 public class HitEvent : UnityEvent<HitEventData> { }
@@ -24,5 +25,15 @@ public class HitEventData
         this.projectile = projectile;
         this.damage = damage;
         this.explosionForce = explosionForce;
+    }
+}
+
+public class KillEventData
+{
+    public GameObject victim;
+
+    public KillEventData(GameObject victim)
+    {
+        this.victim = victim;
     }
 }
