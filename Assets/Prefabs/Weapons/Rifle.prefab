@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1552535881213632927}
-  - component: {fileID: 1552535881213632912}
+  - component: {fileID: 3163572106090542971}
   m_Layer: 0
   m_Name: Gun1
   m_TagString: Untagged
@@ -25,14 +25,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552535881213632926}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.731, y: 0, z: 0}
-  m_LocalScale: {x: 0.68469703, y: 3.0284677, z: 1}
+  m_LocalPosition: {x: 0.539, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1552535883053523491}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1552535881213632912
+--- !u!114 &3163572106090542971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552535881213632926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225c91fd61ecf7e469235459903cefe6, type: 3}
+  m_Script: {fileID: 11500000, guid: 199695330cd771e45b2cd684fc366db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 487453443705103067, guid: bd3e75480d6c21f47a8bd651adbe5d4b, type: 3}
-  isAutoFire: 1
-  coolDown: 0.15
-  bulletForce: 1500
+  bulletPrefab: {fileID: 487453443705103067, guid: 9fdeadb9afcae4b4c928650cab06e4fd, type: 3}
+  coolDown: 1
+  bulletForce: 2000
 --- !u!1 &1552535883053523490
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +58,7 @@ GameObject:
   - component: {fileID: 1552535883053523491}
   - component: {fileID: 1552535883053523492}
   m_Layer: 0
-  m_Name: Machine Gun
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 1552535883053523490}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.4, y: 0, z: 0}
-  m_LocalScale: {x: 1.4605, y: 0.08667749, z: 1}
+  m_LocalScale: {x: 2.5605, y: 0.08667749, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1552535881213632927}
@@ -123,7 +122,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.07191086, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.5471698, g: 0.29773182, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

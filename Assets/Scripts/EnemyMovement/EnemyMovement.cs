@@ -6,7 +6,6 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
     public float enemySpeed = 0.1f;
-    public float hp = 100;
 
     private bool isHit;
 

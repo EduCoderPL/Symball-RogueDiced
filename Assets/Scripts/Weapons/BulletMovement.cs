@@ -22,7 +22,7 @@ public class BulletMovement : MonoBehaviour
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        if (collision.transform.CompareTag("Enemy"))
+        if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Player"))
         {
             RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, gameObject, damage, transform.right * explosionForce));
             GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);

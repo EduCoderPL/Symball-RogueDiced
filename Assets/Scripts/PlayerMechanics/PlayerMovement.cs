@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
-            rb.AddForce(lookDir * 200f);
+            Vector3 lookDir3D = new Vector3(lookDir.x, lookDir.y, 0).normalized;
+            transform.position += lookDir3D * 5;
             StartCoroutine(DodgeCooldown());
         }
 
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void PlayerHit(HitEventData data)
     {
-        rb.AddForce(data.explosionForce * kickBackForce);
+        rb.AddForce(data.explosionForce);
         hitPoints.TakeDamage(10);
         GetComponent<AudioSource>().Play();
     }
