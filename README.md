@@ -19,12 +19,13 @@ They are drawn every 20 seconds.
 2) Small enemy - like previous but he is smaller and faster;
 3) Aggresive enemy - You won`t know what did hit you;
 4) Explosive enemy - when he stops catch you: you should be far away;
+5) Ranged enemy - he will try to shoot you and retreat when you are close to him;
 
 
 # Instruction:
-- WASD - Movement; \
-- LMB - Fire weapon; \
-- RMB - dodge; \
-- QE - Choose weapon; \
+- WASD - Movement;
+- LMB - Fire weapon;
+- RMB - dodge;
+- QE - Choose weapon;
 - R - reset; \
-- Esc - Main Menu; \
+- Esc - Main Menu;
