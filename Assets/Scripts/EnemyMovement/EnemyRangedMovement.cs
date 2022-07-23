@@ -48,6 +48,7 @@ public class EnemyRangedMovement : MonoBehaviour
 
             else
             {
+                rb.AddForce(-enemySpeed * Time.deltaTime * transform.right);
                 Vector2 lookDir = target.position - transform.position;
                 float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(0, 0, angle);
