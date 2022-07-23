@@ -14,7 +14,14 @@ public class GameLogic : MonoBehaviour
     {
         if (data.victim.CompareTag("Enemy"))
         {
-            data.victim.GetComponent<EnemyMovement>().EnemyHit(data);
+            if (data.victim.TryGetComponent(out EnemyMovement enemyMovement))
+            {
+                enemyMovement.EnemyHit(data);
+            }
+            if (data.victim.TryGetComponent(out EnemyRangedMovement enemyRangedMovement))
+            {
+                enemyRangedMovement.EnemyHit(data);
+            }
         }
         if (data.victim.CompareTag("Player"))
         {

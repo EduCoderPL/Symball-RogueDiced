@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour
     public float timeToSpawn = 10f;
     // Start is called before the first frame update
     public GameObject[] listOfEnemies;
+
+    public Transform enemyEmptyObject;
     void Start()
     {
         StartCoroutine(SpawnNewEnemy());
@@ -25,6 +27,7 @@ public class Spawner : MonoBehaviour
         {
             GameObject newEnemy = listOfEnemies[Random.Range(0, listOfEnemies.Length)];
             GameObject test = Instantiate(newEnemy, transform.position, transform.rotation);
+            test.transform.SetParent(enemyEmptyObject);
             yield return new WaitForSeconds(Random.Range(timeToSpawn/2, timeToSpawn));
         }
 
