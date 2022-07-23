@@ -27,5 +27,5 @@ They are drawn every 20 seconds.
 - LMB - Fire weapon;
 - RMB - dodge;
 - QE - Choose weapon;
-- R - reset; \
+- R - reset;
 - Esc - Main Menu;
