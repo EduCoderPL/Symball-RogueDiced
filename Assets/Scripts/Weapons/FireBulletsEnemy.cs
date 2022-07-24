@@ -11,6 +11,8 @@ public class FireBulletsEnemy : MonoBehaviour, IWeapon
     public float bulletForce = 20f;
     private bool canFire;
 
+    private Transform endOfBarrel;
+
 
 
     // Start is called before the first frame update
@@ -18,6 +20,8 @@ public class FireBulletsEnemy : MonoBehaviour, IWeapon
     {
         canFire = true;
         lastTimeFire = Time.time;
+
+        endOfBarrel = transform.GetChild(0);
     }
 
 
@@ -35,9 +39,9 @@ public class FireBulletsEnemy : MonoBehaviour, IWeapon
     {
         if (canFire)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, endOfBarrel.position, endOfBarrel.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(transform.right * bulletForce);
+            rb.AddForce(endOfBarrel.right * bulletForce);
 
             canFire = false;
             lastTimeFire = Time.time;

@@ -78,7 +78,6 @@ public class EnemyMovement : MonoBehaviour
     public void EnemyHit(HitEventData data)
     {
         hitPoints.TakeDamage(data.damage);
-        rb.velocity = Vector2.zero;
         rb.AddForce(data.explosionForce);      
     }
 
