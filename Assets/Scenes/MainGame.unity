@@ -1263,7 +1263,6 @@ GameObject:
   m_Component:
   - component: {fileID: 520485515}
   - component: {fileID: 520485514}
-  - component: {fileID: 520485516}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -1338,26 +1337,6 @@ Transform:
   m_Father: {fileID: 1072623852}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &520485516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520485513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d8e9ff1e196a641821f133fea4c610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSpawn: 10
-  listOfEnemies:
-  - {fileID: 7669633227289770713, guid: b5b0aa2fd86098842896d126202681d8, type: 3}
-  - {fileID: 7669633227289770713, guid: a0e03ef4fc1f2c749826f85823bc5e24, type: 3}
-  - {fileID: 7669633227289770713, guid: 010d0efa74f48e74e9b52e5d96114b0b, type: 3}
-  - {fileID: 7669633227289770713, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
-  - {fileID: 7636041555863001661, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
-  enemyEmptyObject: {fileID: 39048713}
 --- !u!1001 &549595681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2025,6 +2004,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1072623852}
+  - component: {fileID: 1072623853}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -2051,6 +2031,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072623853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072623851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d8e9ff1e196a641821f133fea4c610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToSpawn: 5
+  listOfSpawners:
+  - {fileID: 520485515}
+  - {fileID: 2064904953}
+  - {fileID: 1074661883}
+  - {fileID: 1895792333}
+  listOfEnemies:
+  - {fileID: 7669633227289770713, guid: b5b0aa2fd86098842896d126202681d8, type: 3}
+  - {fileID: 7669633227289770713, guid: a0e03ef4fc1f2c749826f85823bc5e24, type: 3}
+  - {fileID: 7636041555863001661, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
+  - {fileID: 7669633227289770713, guid: 010d0efa74f48e74e9b52e5d96114b0b, type: 3}
+  - {fileID: 7669633227289770713, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
+  enemyEmptyObject: {fileID: 39048713}
 --- !u!1 &1074661880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,7 +2066,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1074661883}
   - component: {fileID: 1074661882}
-  - component: {fileID: 1074661881}
   m_Layer: 0
   m_Name: Spawner (2)
   m_TagString: Untagged
@@ -2069,26 +2073,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1074661881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074661880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d8e9ff1e196a641821f133fea4c610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSpawn: 10
-  listOfEnemies:
-  - {fileID: 7669633227289770713, guid: b5b0aa2fd86098842896d126202681d8, type: 3}
-  - {fileID: 7669633227289770713, guid: a0e03ef4fc1f2c749826f85823bc5e24, type: 3}
-  - {fileID: 7669633227289770713, guid: 010d0efa74f48e74e9b52e5d96114b0b, type: 3}
-  - {fileID: 7669633227289770713, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
-  - {fileID: 7636041555863001661, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
-  enemyEmptyObject: {fileID: 39048713}
 --- !u!212 &1074661882
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3151,7 +3135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1895792333}
   - component: {fileID: 1895792332}
-  - component: {fileID: 1895792331}
   m_Layer: 0
   m_Name: Spawner (3)
   m_TagString: Untagged
@@ -3159,26 +3142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1895792331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895792330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d8e9ff1e196a641821f133fea4c610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSpawn: 10
-  listOfEnemies:
-  - {fileID: 7669633227289770713, guid: b5b0aa2fd86098842896d126202681d8, type: 3}
-  - {fileID: 7669633227289770713, guid: a0e03ef4fc1f2c749826f85823bc5e24, type: 3}
-  - {fileID: 7669633227289770713, guid: 010d0efa74f48e74e9b52e5d96114b0b, type: 3}
-  - {fileID: 7669633227289770713, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
-  - {fileID: 7636041555863001661, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
-  enemyEmptyObject: {fileID: 39048713}
 --- !u!212 &1895792332
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3844,7 +3807,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2064904953}
   - component: {fileID: 2064904952}
-  - component: {fileID: 2064904951}
   m_Layer: 0
   m_Name: Spawner (1)
   m_TagString: Untagged
@@ -3852,26 +3814,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2064904951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064904950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d8e9ff1e196a641821f133fea4c610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSpawn: 10
-  listOfEnemies:
-  - {fileID: 7669633227289770713, guid: b5b0aa2fd86098842896d126202681d8, type: 3}
-  - {fileID: 7669633227289770713, guid: a0e03ef4fc1f2c749826f85823bc5e24, type: 3}
-  - {fileID: 7669633227289770713, guid: 010d0efa74f48e74e9b52e5d96114b0b, type: 3}
-  - {fileID: 7669633227289770713, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
-  - {fileID: 7636041555863001661, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
-  enemyEmptyObject: {fileID: 39048713}
 --- !u!212 &2064904952
 SpriteRenderer:
   m_ObjectHideFlags: 0
