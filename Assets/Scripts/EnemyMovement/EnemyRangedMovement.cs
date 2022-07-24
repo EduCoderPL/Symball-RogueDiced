@@ -19,6 +19,14 @@ public class EnemyRangedMovement : MonoBehaviour
 
     private bool isKnockedOut;
 
+    private bool isHit;
+
+    private Color[] colorList;
+    private int colorIndex;
+
+
+    private SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +34,13 @@ public class EnemyRangedMovement : MonoBehaviour
         canFireToTarget = false;
 
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         weapon = GetComponentInChildren<FireBulletsEnemy>();
         isKnockedOut = false;
+        isHit = false;
+
+        colorList = new Color[] { Color.black, spriteRenderer.color };
+        colorIndex = 0;
 
     }
 
@@ -54,6 +67,10 @@ public class EnemyRangedMovement : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
             
+        }
+        if (isHit)
+        {
+            Blink();
         }
     }
 
@@ -89,6 +106,7 @@ public class EnemyRangedMovement : MonoBehaviour
 
     public void EnemyHit(HitEventData data)
     {
+        StartCoroutine(BlinkingControl());
         StartCoroutine(KnockOut());
         hitPoints.TakeDamage(data.damage);
         rb.velocity = Vector2.zero;
@@ -100,6 +118,21 @@ public class EnemyRangedMovement : MonoBehaviour
         isKnockedOut = true;
         yield return new WaitForSeconds(1f);
         isKnockedOut = false;
+    }
+
+    void Blink()
+    {
+        colorIndex = (colorIndex + 1) % 2;
+
+        spriteRenderer.color = colorList[colorIndex];
+    }
+
+    private IEnumerator BlinkingControl()
+    {
+        isHit = true;
+        yield return new WaitForSeconds(2f);
+        isHit = false;
+        spriteRenderer.color = colorList[1];
     }
 
 }
