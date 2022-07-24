@@ -236,6 +236,7 @@ Transform:
   - {fileID: 355572488}
   - {fileID: 277207261}
   - {fileID: 986532505}
+  - {fileID: 1014504692}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1659,6 +1660,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4022441295232880523, guid: 4701ca438c07c9e4a8580c9826e9a036, type: 3}
   m_PrefabInstance: {fileID: 1850530257804586542}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &671757684
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 39048713}
+    m_Modifications:
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.470247
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636041555863001661, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+      propertyPath: m_Name
+      value: EnemyRangedSniper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
 --- !u!4 &691543583 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4022441295232880523, guid: 4701ca438c07c9e4a8580c9826e9a036, type: 3}
@@ -1990,6 +2048,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4455222612962030000, guid: b5b0aa2fd86098842896d126202681d8, type: 3}
   m_PrefabInstance: {fileID: 263104613}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1014504692 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
+  m_PrefabInstance: {fileID: 671757684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1033119825 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4022441295232880523, guid: 4701ca438c07c9e4a8580c9826e9a036, type: 3}
@@ -2055,6 +2118,7 @@ MonoBehaviour:
   - {fileID: 7636041555863001661, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
   - {fileID: 7669633227289770713, guid: 010d0efa74f48e74e9b52e5d96114b0b, type: 3}
   - {fileID: 7669633227289770713, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
+  - {fileID: 7636041555863001661, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
   enemyEmptyObject: {fileID: 39048713}
 --- !u!1 &1074661880
 GameObject:

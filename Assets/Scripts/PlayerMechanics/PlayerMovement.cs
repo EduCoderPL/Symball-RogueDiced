@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     public void PlayerHit(HitEventData data)
     {
         rb.AddForce(data.explosionForce);
-        hitPoints.TakeDamage(10);
+        hitPoints.TakeDamage(data.damage);
         GetComponent<AudioSource>().Play();
     }
 }

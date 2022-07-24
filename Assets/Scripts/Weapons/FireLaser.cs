@@ -50,7 +50,7 @@ public class FireLaser : MonoBehaviour, IWeapon
         laser.enabled = true;
         laser.SetPosition(0, transform.GetChild(0).position);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, laserDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.GetChild(0).position, transform.GetChild(0).right, laserDistance);
         if (hit.collider != null)
         {
             laser.SetPosition(1, hit.point);

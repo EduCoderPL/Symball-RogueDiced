@@ -24,6 +24,10 @@ public class EnemyRangedMovement : MonoBehaviour, IEnemy
     private Color[] colorList;
     private int colorIndex;
 
+    public float rotationSpeed = 40f;
+
+    public bool isAiming;
+
 
     private SpriteRenderer spriteRenderer;
 
@@ -41,6 +45,7 @@ public class EnemyRangedMovement : MonoBehaviour, IEnemy
 
         colorList = new Color[] { Color.black, spriteRenderer.color };
         colorIndex = 0;
+        isAiming = false;
 
     }
 
@@ -50,7 +55,11 @@ public class EnemyRangedMovement : MonoBehaviour, IEnemy
         if (target != null && !isKnockedOut)
         {
             CheckIfTargetInRange();
-            Move();
+            if (!isAiming)
+            {
+                Move();
+            }
+            
 
         }
         if (isHit)
@@ -61,19 +70,22 @@ public class EnemyRangedMovement : MonoBehaviour, IEnemy
 
     public void Move()
     {
+
+        Vector2 lookDir = (target.position - transform.position).normalized;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * rotationSpeed);
+
         if (!canFireToTarget)
         {
-            rb.AddForce(enemySpeed * Time.deltaTime * transform.right);
+            rb.AddForce(enemySpeed * Time.deltaTime * lookDir);
         }
 
         else
         {
-            rb.AddForce(-enemySpeed * Time.deltaTime * transform.right);
+            rb.AddForce(-enemySpeed * Time.deltaTime * lookDir);
         }
-
-        Vector2 lookDir = target.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void CheckIfTargetInRange()
