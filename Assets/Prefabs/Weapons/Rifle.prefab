@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552535883053523491}
   - component: {fileID: 1552535883053523492}
-  - component: {fileID: 4760147430807704931}
+  - component: {fileID: 2413186101171654742}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4760147430807704931
+--- !u!114 &2413186101171654742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,9 +126,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1552535883053523490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199695330cd771e45b2cd684fc366db9, type: 3}
+  m_Script: {fileID: 11500000, guid: 225c91fd61ecf7e469235459903cefe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 487453443705103067, guid: 9fdeadb9afcae4b4c928650cab06e4fd, type: 3}
+  isAutoFire: 1
   coolDown: 1
   bulletForce: 2000

@@ -10,13 +10,10 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     public float damage = 20;
 
     public float attackTranslation = 1f;
-
     public float cooldownTime = 0.1f;
-
     private Collider2D weaponCollider;
 
     public float explosionForce = 500;
-    
     private AudioSource[] sounds;
 
     // Start is called before the first frame update
@@ -33,22 +30,20 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && canAttack)
-        {
-            Attack();
-            
-        }
+
     }    
     
     public void Attack()
     {
-        sounds[0].Play();
-        transform.position += transform.right * attackTranslation;
-        canAttack = false;
-        weaponCollider.enabled = true;
-        StartCoroutine(StopAttack());
-        StartCoroutine(Cooldown());
-
+        if(canAttack)
+        {
+            sounds[0].Play();
+            transform.position += transform.right * attackTranslation;
+            canAttack = false;
+            weaponCollider.enabled = true;
+            StartCoroutine(StopAttack());
+            StartCoroutine(Cooldown());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

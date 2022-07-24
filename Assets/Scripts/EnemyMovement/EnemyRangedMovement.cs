@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRangedMovement : MonoBehaviour
+public class EnemyRangedMovement : MonoBehaviour, IEnemy
 {
 
     public Transform target;
@@ -15,7 +15,7 @@ public class EnemyRangedMovement : MonoBehaviour
 
     private bool canFireToTarget;
 
-    private FireBulletsEnemy weapon;
+    public IWeapon weapon;
 
     private bool isKnockedOut;
 
@@ -35,7 +35,7 @@ public class EnemyRangedMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        weapon = GetComponentInChildren<FireBulletsEnemy>();
+        weapon = GetComponentInChildren<IWeapon>();
         isKnockedOut = false;
         isHit = false;
 
@@ -50,28 +50,30 @@ public class EnemyRangedMovement : MonoBehaviour
         if (target != null && !isKnockedOut)
         {
             CheckIfTargetInRange();
-            if (!canFireToTarget)
-            {
-                Vector2 lookDir = target.position - transform.position;
-                float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0, 0, angle);
+            Move();
 
-                rb.AddForce(enemySpeed * Time.deltaTime * transform.right);
-            }
-
-            else
-            {
-                rb.AddForce(-enemySpeed * Time.deltaTime * transform.right);
-                Vector2 lookDir = target.position - transform.position;
-                float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0, 0, angle);
-            }
-            
         }
         if (isHit)
         {
             Blink();
         }
+    }
+
+    public void Move()
+    {
+        if (!canFireToTarget)
+        {
+            rb.AddForce(enemySpeed * Time.deltaTime * transform.right);
+        }
+
+        else
+        {
+            rb.AddForce(-enemySpeed * Time.deltaTime * transform.right);
+        }
+
+        Vector2 lookDir = target.position - transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void CheckIfTargetInRange()

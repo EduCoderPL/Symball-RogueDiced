@@ -13,6 +13,7 @@ public class WeaponAiming : MonoBehaviour
     Vector2 mousePos;
 
     public GameObject weapon;
+    public IWeapon actualWeapon;
 
     public float rotationSpeed = 50f;
 
@@ -45,7 +46,10 @@ public class WeaponAiming : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E)) SetWeapon(1);
         }
 
-
+        if (Input.GetButton("Fire1"))
+        {
+            actualWeapon.Attack();
+        }
     }
 
     private void FixedUpdate()
@@ -70,6 +74,7 @@ public class WeaponAiming : MonoBehaviour
         GameObject temp = activeWeapons[number];
         weapon = Instantiate(temp, transform.position + transform.right * 0.4f + transform.up * -0.3f, transform.rotation);
         weapon.transform.SetParent(transform);
+        actualWeapon = weapon.GetComponent<IWeapon>();
     }
 
 

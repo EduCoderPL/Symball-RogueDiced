@@ -11,3 +11,10 @@ public interface IDeathEffect
 {
     void Die();
 }
+
+public interface IEnemy
+{
+    public void EnemyHit(HitEventData data);
+}
+
+

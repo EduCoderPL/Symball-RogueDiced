@@ -28,29 +28,25 @@ public class FireBullets : MonoBehaviour, IWeapon
     // Update is called once per frame
     void Update()
     {
-        if (canFire)
-        {
-            if ((Input.GetButton("Fire1") && isAutoFire) || (Input.GetButtonDown("Fire1") && !isAutoFire))
-            {
-                Attack();
-            }
-        }
-
-
         if(!canFire && Time.time > lastTimeFire + coolDown)
         {
-            canFire = true;
+            if(isAutoFire || !isAutoFire && Input.GetButtonUp("Fire1"))
+                canFire = true;
         }
+
     }
 
 
     public void Attack()
     {
-        GameObject bullet = Instantiate(bulletPrefab, endOfBarrel.position, endOfBarrel.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(endOfBarrel.right * bulletForce);
+        if (canFire)
+        {
+            GameObject bullet = Instantiate(bulletPrefab, endOfBarrel.position, endOfBarrel.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(endOfBarrel.right * bulletForce);
 
-        canFire = false;
-        lastTimeFire = Time.time;
+            canFire = false;
+            lastTimeFire = Time.time;
+        }
     }
 }

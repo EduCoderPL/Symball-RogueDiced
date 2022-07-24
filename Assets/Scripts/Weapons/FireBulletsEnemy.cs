@@ -41,7 +41,7 @@ public class FireBulletsEnemy : MonoBehaviour, IWeapon
         {
             GameObject bullet = Instantiate(bulletPrefab, endOfBarrel.position, endOfBarrel.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(endOfBarrel.right * bulletForce);
+            rb.AddForce(transform.right * bulletForce);
 
             canFire = false;
             lastTimeFire = Time.time;

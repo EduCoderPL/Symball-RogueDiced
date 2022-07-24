@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1552535881213632927}
   - component: {fileID: 644812842016698490}
-  - component: {fileID: 2846997536128321523}
   - component: {fileID: 93861241689794599}
   m_Layer: 0
   m_Name: Gun1
@@ -133,23 +132,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &2846997536128321523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552535881213632926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4549dd292198049a3c675b928f4ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laser: {fileID: 644812842016698490}
-  laserDistance: 1000
-  damagePerSecond: 60
-  laserEnding: {fileID: 828830373417405275}
-  laserSound: {fileID: 93861241689794599}
 --- !u!82 &93861241689794599
 AudioSource:
   m_ObjectHideFlags: 0
@@ -256,6 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552535883053523491}
   - component: {fileID: 1552535883053523492}
+  - component: {fileID: 923397581099012279}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -332,6 +315,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &923397581099012279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1552535883053523490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4549dd292198049a3c675b928f4ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 644812842016698490}
+  laserDistance: 1000
+  damagePerSecond: 60
+  laserEnding: {fileID: 828830373417405275}
+  laserSound: {fileID: 93861241689794599}
 --- !u!1001 &2118157745465997664
 PrefabInstance:
   m_ObjectHideFlags: 0
