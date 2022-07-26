@@ -47,6 +47,8 @@ public class AudioManager : MonoBehaviour
     {
         volumeMusicSlider.value = PlayerPrefs.GetFloat("musicVolume");
         volumeSoundSlider.value = PlayerPrefs.GetFloat("soundVolume");
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volumeMusicSlider.value) * 20);
+        audioMixer.SetFloat("SoundVolume", Mathf.Log10(volumeSoundSlider.value) * 20);
     }
 
     private void Save()
