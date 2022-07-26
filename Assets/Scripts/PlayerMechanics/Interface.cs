@@ -25,6 +25,9 @@ public class Interface : MonoBehaviour
     private float playerHP;
 
 
+    public static bool gameIsPaused = false;
+    public GameObject pauseMenuUI;
+
     private float estimatedTimeToRoll;
 
 
@@ -42,9 +45,9 @@ public class Interface : MonoBehaviour
         textDice = objectDiceText.GetComponent<TextMeshProUGUI>();
         points = 0;
         playerHP = player.GetComponent<HitPoints>().GetHP();
-        
-        
 
+
+        Resume();
     }
 
     // Update is called once per frame
@@ -55,10 +58,21 @@ public class Interface : MonoBehaviour
 
         textDice.text = "TIME TO NEXT ROLL: \n" + Mathf.Ceil(estimatedTimeToRoll - Time.time);
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene(0);
+            if (gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+            
         }
+
+
+
     }
 
     
@@ -77,6 +91,27 @@ public class Interface : MonoBehaviour
     public void AddPoints()
     {
         points += 100;
+    }
+
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        gameIsPaused = false ;
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
     }
 
 
