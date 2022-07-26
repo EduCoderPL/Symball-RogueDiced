@@ -27,7 +27,7 @@ public class FireRailGun : MonoBehaviour, IWeapon
     // Start is called before the first frame update
     void Start()
     {
-        canFire = true;
+        canFire = false;
         lastTimeFire = Time.time;
         endOfBarrel = transform.GetChild(0);
         weaponUser = transform.parent.GetComponent<EnemyRangedMovement>();

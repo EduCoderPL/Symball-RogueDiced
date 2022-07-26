@@ -1,18 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(HitPoints))]
 public class PlayerMovement : MonoBehaviour
 {
+    private Rigidbody2D rb;
+    private HitPoints hitPoints;
+
+
     public float moveSpeed = 5f;
 
-    public Rigidbody2D rb;
-    public HitPoints hitPoints;
-
-    public float kickBackForce = 1000;
-
-    private bool canDodge;
     public float dodgeCooldownTime = 1f;
+    private bool canDodge;
 
     Vector2 movement;
 
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.velocity += moveSpeed * Time.fixedDeltaTime * movement;
+        rb.velocity += moveSpeed * Time.fixedDeltaTime * movement.normalized;
     }
     public void PlayerHit(HitEventData data)
     {

@@ -13,8 +13,6 @@ public class SuicideBomberEnemy : MonoBehaviour, IDeathEffect
 
     Collider2D[] colliders = null;
 
-    public LayerMask layerToHit = 1;
-    // Start is called before the first frame update
     void Start()
     {
         enemyMovement = GetComponent<EnemyMovement>();
@@ -22,7 +20,6 @@ public class SuicideBomberEnemy : MonoBehaviour, IDeathEffect
         Physics2D.queriesStartInColliders = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (enemyMovement.target != null)
@@ -46,10 +43,12 @@ public class SuicideBomberEnemy : MonoBehaviour, IDeathEffect
 
     IEnumerator Explode()
     {
-
+        Debug.Log("Start Corotutine");
         Destroy(enemyMovement);
         Destroy(gameObject.GetComponent<Rigidbody2D>());
-        yield return new WaitForSeconds(1f);
+        Debug.Log("Destroyed GameObjects");
+        yield return new WaitForSeconds(2f);
+        Debug.Log("waited");
         Knockback();
         Instantiate(explosionParticle, transform.position, transform.rotation);
         Destroy(gameObject);
@@ -85,6 +84,6 @@ public class SuicideBomberEnemy : MonoBehaviour, IDeathEffect
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        StartCoroutine(Explode());
     }
 }

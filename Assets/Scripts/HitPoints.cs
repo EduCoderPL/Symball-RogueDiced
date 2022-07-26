@@ -7,11 +7,13 @@ public class HitPoints : MonoBehaviour
 
     private float hp;
     [SerializeField] private float startHP = 100;
-    [SerializeField] public IDeathEffect deathEffect;
+    [SerializeField] private IDeathEffect deathEffect;
+
 
     private void Awake()
     {
         hp = startHP;
+        TryGetComponent(out IDeathEffect deathEffect);
     }
 
 
@@ -26,9 +28,9 @@ public class HitPoints : MonoBehaviour
         }
     }
 
-    public void Heal(float healAmoount)
+    public void Heal(float healAmount)
     {
-        hp += healAmoount;
+        hp += healAmount;
         hp = Mathf.Clamp(hp, 0, startHP);
     }
 
@@ -36,6 +38,7 @@ public class HitPoints : MonoBehaviour
     {
         if(deathEffect != null)
         {
+            Debug.Log("Death Effect nie jest nullowy");
             deathEffect.Die();
         }
         else

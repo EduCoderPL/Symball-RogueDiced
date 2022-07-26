@@ -20,11 +20,12 @@ public class MeleeWeapon : MonoBehaviour, IWeapon
     void Start()
     {
         startPoint = transform.parent.transform;
-        canAttack = true;
+        canAttack = false;
 
         weaponCollider = GetComponent<Collider2D>();
         weaponCollider.enabled = false;
         sounds = GetComponents<AudioSource>();
+        StartCoroutine(Cooldown());
     }
 
     // Update is called once per frame

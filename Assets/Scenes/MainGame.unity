@@ -352,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &39048713
 Transform:
   m_ObjectHideFlags: 0
@@ -386,7 +386,6 @@ Transform:
   - {fileID: 62107291}
   - {fileID: 1238950176}
   - {fileID: 355572488}
-  - {fileID: 277207261}
   - {fileID: 986532505}
   - {fileID: 1014504692}
   m_Father: {fileID: 0}
@@ -427,9 +426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  rb: {fileID: 48103756}
-  hitPoints: {fileID: 0}
-  kickBackForce: 500
   dodgeCooldownTime: 1
 --- !u!61 &48103755
 BoxCollider2D:
@@ -1331,11 +1327,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5.0000305, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &277207261 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4455222612962030000, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
-  m_PrefabInstance: {fileID: 1947501520}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &317335035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,7 +2737,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7636041555863001651, guid: c0ea80d2fee06de41bef529532ec2e34, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5771,11 +5762,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 39048713}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3915236317663595807, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
+      propertyPath: startHP
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4455222612962030000, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4455222612962030000, guid: 45666c93c215b884da63fdcee5651ab9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6441,7 +6436,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7636041555863001651, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7636041555863001651, guid: e996734d2e3e22f439903067ba3a71ed, type: 3}
       propertyPath: m_LocalPosition.x

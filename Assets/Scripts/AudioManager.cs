@@ -35,8 +35,6 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(PlayerPrefs.GetFloat("musicVolume") + " --- " + PlayerPrefs.GetFloat("soundVolume"));
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             PlayerPrefs.DeleteAll();

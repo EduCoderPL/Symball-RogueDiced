@@ -19,7 +19,7 @@ public class FireBullets : MonoBehaviour, IWeapon
     // Start is called before the first frame update
     void Start()
     {
-        canFire = true;
+        canFire = false;
         lastTimeFire = Time.time;
         endOfBarrel = transform.GetChild(0);
     }
@@ -33,7 +33,6 @@ public class FireBullets : MonoBehaviour, IWeapon
             if(isAutoFire || !isAutoFire && Input.GetButtonUp("Fire1"))
                 canFire = true;
         }
-
     }
 
 
