@@ -2,44 +2,80 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider volumeMusicSlider;
+    [SerializeField] Slider volumeSoundSlider;
+
+
+    [SerializeField] AudioMixer audioMixer;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        volumeMusicSlider.onValueChanged.AddListener(SetMusicVolume);
+        volumeSoundSlider.onValueChanged.AddListener(SetSoundVolume);
+    }
     void Start()
     {
+
         if (!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("musicVolume", 1);
-            Load();
+            PlayerPrefs.SetFloat("musicVolume", 0.2f);
+        }
+        if (!PlayerPrefs.HasKey("soundVolume"))
+        {
+            PlayerPrefs.SetFloat("soundVolume", 0.2f);
         }
         Load();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        AudioListener.volume = volumeSlider.value;
-        Save();
-        Debug.Log(AudioListener.volume = volumeSlider.value);
+        Debug.Log(PlayerPrefs.GetFloat("musicVolume") + " --- " + PlayerPrefs.GetFloat("soundVolume"));
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 
     private void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        volumeMusicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        volumeSoundSlider.value = PlayerPrefs.GetFloat("soundVolume");
     }
 
     private void Save()
     {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", volumeMusicSlider.value);
+        PlayerPrefs.SetFloat("soundVolume", volumeSoundSlider.value);
     }
+
+    private void SetMusicVolume(float value)
+    {
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volumeMusicSlider.value) * 20);
+        audioMixer.SetFloat("SoundVolume", Mathf.Log10(volumeSoundSlider.value) * 20);
+        Save();
+    }
+
+    private void SetSoundVolume(float value)
+    {
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(volumeMusicSlider.value) * 20);
+        audioMixer.SetFloat("SoundVolume", Mathf.Log10(volumeSoundSlider.value) * 20);
+        Save();
+    }
+
 
     private void OnDisable()
     {
         
     }
 
-
 }
+
+
 
