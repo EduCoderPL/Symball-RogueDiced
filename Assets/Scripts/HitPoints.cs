@@ -10,10 +10,11 @@ public class HitPoints : MonoBehaviour
     [SerializeField] private IDeathEffect deathEffect;
 
 
-    private void Awake()
+    private void Start()
     {
         hp = startHP;
-        TryGetComponent(out IDeathEffect deathEffect);
+        TryGetComponent(out IDeathEffect outputComponent);
+        deathEffect = outputComponent;
     }
 
 
@@ -38,7 +39,6 @@ public class HitPoints : MonoBehaviour
     {
         if(deathEffect != null)
         {
-            Debug.Log("Death Effect nie jest nullowy");
             deathEffect.Die();
         }
         else

@@ -10,6 +10,7 @@ public class SuicideBomberEnemy : MonoBehaviour, IDeathEffect
     public float radius = 100f;
     public float explosionForceCoef = 1000f;
     public float explodeDistance = 10f;
+    public float timeToDetonate = 1f;
 
     Collider2D[] colliders = null;
 
@@ -43,12 +44,9 @@ public class SuicideBomberEnemy : MonoBehaviour, IDeathEffect
 
     IEnumerator Explode()
     {
-        Debug.Log("Start Corotutine");
         Destroy(enemyMovement);
         Destroy(gameObject.GetComponent<Rigidbody2D>());
-        Debug.Log("Destroyed GameObjects");
-        yield return new WaitForSeconds(2f);
-        Debug.Log("waited");
+        yield return new WaitForSeconds(timeToDetonate);
         Knockback();
         Instantiate(explosionParticle, transform.position, transform.rotation);
         Destroy(gameObject);
