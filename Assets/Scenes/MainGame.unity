@@ -352,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &39048713
 Transform:
   m_ObjectHideFlags: 0
@@ -428,8 +428,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 30
   dodgeTrail: {fileID: 756627743}
-  dodgeCooldownTime: 1
-  dodgeDistance: 5
+  dodgeCooldownTime: 5
+  dodgeDistance: 75
+  hitEffectAudio: {fileID: 48103759}
 --- !u!61 &48103755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2942,7 +2943,7 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_Autodestruct: 1
+  m_Autodestruct: 0
   m_Emitting: 0
 --- !u!4 &763941010 stripped
 Transform:

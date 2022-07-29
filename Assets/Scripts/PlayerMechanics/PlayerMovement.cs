@@ -8,15 +8,21 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private HitPoints hitPoints;
 
+    [Header("Components")]
+    [Tooltip("Audio Source of hit effect.")]
+    public AudioSource hitEffectAudio;
 
+    [Header("Movement info")]
+    [Tooltip("The bigger it is - the faster the player is.")]
     public float moveSpeed = 5f;
+    private Vector2 movement;
 
+    [Header("Dodge info")]
     public TrailRenderer dodgeTrail;
     public float dodgeCooldownTime = 1f;
     public float dodgeDistance = 5f;
     private bool canDodge;
 
-    Vector2 movement;
 
     void Awake()
     {
@@ -43,11 +49,8 @@ public class PlayerMovement : MonoBehaviour
         {
             dodgeTrail.emitting = true;
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
-            Vector2 lookDir3D = new Vector2(lookDir.x, lookDir.y).normalized;
-            transform.position += (Vector3)lookDir3D * dodgeDistance;
-            rb.velocity += lookDir3D * dodgeDistance * 10;
-
+            Vector2 lookDir = (mousePos - new Vector2(transform.position.x, transform.position.y)).normalized;
+            rb.velocity += dodgeDistance * lookDir;
 
             StartCoroutine(DodgeCooldown());
         }
@@ -66,10 +69,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity += moveSpeed * Time.fixedDeltaTime * movement.normalized;
     }
+
+
+    /// <summary>
+    /// It makes damage effect for Player component HitPoints.
+    /// </summary>
+    /// <param name="data">HitEventData for enemy: victim, bullet, damage and vector of kickback force.</param>
     public void PlayerHit(HitEventData data)
     {
         rb.AddForce(data.explosionForce);
         hitPoints.TakeDamage(data.damage);
-        GetComponent<AudioSource>().Play();
+        hitEffectAudio.Play();
     }
 }

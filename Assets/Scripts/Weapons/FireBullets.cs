@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class FireBullets : MonoBehaviour, IWeapon
 {
-
     public GameObject bulletPrefab;
+    public AudioSource shootAudioEffect;
     public bool isAutoFire;
     public float coolDown = 1f;
     private float lastTimeFire;
@@ -16,11 +16,12 @@ public class FireBullets : MonoBehaviour, IWeapon
 
 
 
+
     // Start is called before the first frame update
     void Start()
     {
         canFire = false;
-        lastTimeFire = Time.time;
+        lastTimeFire = Time.time + lastTimeFire - 1f;
         endOfBarrel = transform.GetChild(0);
     }
 
@@ -44,6 +45,7 @@ public class FireBullets : MonoBehaviour, IWeapon
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(endOfBarrel.right * bulletForce);
 
+            shootAudioEffect.Play();
             canFire = false;
             lastTimeFire = Time.time;
         }

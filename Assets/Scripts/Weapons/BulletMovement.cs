@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
+    [Tooltip("It describes, how long does bullet exist after spawn.")]
     public float lifeTime = 5f;
+
+    [Tooltip("Particle effect that appears when bullet hit something.")]
     public GameObject hitEffect;
 
+    [Tooltip("Damage that bullet can give to object that it hit.")]
     public float damage = 10;
-    public float explosionForce = 1000;
-    public bool destroyAfterEnemyTouch;
+
+    [Tooltip("Force that bullet give after hit.")]
+    public float kickbackForce = 1000;
+
+    [Tooltip("If true: bullet will destroy after touching enemies. Else it will move until it touch a wall.")]
+    public bool isDestroyedAfterTouch;
+
     void Start()
     {
         Destroy(gameObject, lifeTime);
@@ -19,15 +28,17 @@ public class BulletMovement : MonoBehaviour
     {
         if (collision.transform.CompareTag("Wall"))
         {
-            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+
         if (collision.transform.CompareTag("Enemy") || collision.transform.CompareTag("Player"))
         {
-            RogueDicedEvents.hitEvent.Invoke(new HitEventData(collision.gameObject, gameObject, damage, transform.right * explosionForce));
-            GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            HitEventData tempHitEventData = new(collision.gameObject, gameObject, damage, transform.right * kickbackForce);
+            RogueDicedEvents.hitEvent.Invoke(tempHitEventData);
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-            if (destroyAfterEnemyTouch)
+            if (isDestroyedAfterTouch)
             {
                 Destroy(gameObject);
             }

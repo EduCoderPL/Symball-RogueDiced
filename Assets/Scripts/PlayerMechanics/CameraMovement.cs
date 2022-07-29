@@ -37,11 +37,8 @@ public class CameraMovement : MonoBehaviour
 
             //Get Position between target and mouse;
             Vector3 targetMousePosition = target.position + (mousePosition - target.position) * centerCoefficient;
-
-
             Vector2 shakeVector = new(Random.Range(-shakeCoef, shakeCoef), Random.Range(-shakeCoef, shakeCoef));
             Vector3 newPosition = new(targetMousePosition.x + shakeVector.x, targetMousePosition.y + shakeVector.y, -10);
-
             transform.position = Vector3.Lerp(transform.position, newPosition, lerpCoefficient * Time.deltaTime);
         }
         else

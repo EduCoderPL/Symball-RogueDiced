@@ -4,27 +4,44 @@ using UnityEngine;
 
 public class WeaponAiming : MonoBehaviour
 {
-    public List<GameObject> listOfWeapons;
-    public Camera cam;
+    [Header("Weapons management")]
+    [Tooltip("List of all weapons that player can use")]
+    [SerializeField] List<GameObject> listOfWeapons;
 
-    public GameObject[] activeWeapons;
+    [Tooltip("Two of active weapons.")]
+    [SerializeField] GameObject[] activeWeapons;
 
-    public bool delayedRotation;
-    Vector2 mousePos;
-
-    public GameObject weapon;
-    public IWeapon actualWeapon;
-
-    public float rotationSpeed = 50f;
-
+    [Tooltip("Numbers of active weapons.")]
     public static int[] numbers;
+
+    [Tooltip("Randomize weapon cooldown.")]
     public static float timeToRandomize = 15f;
 
-    public Interface ui;
+    [Header("Weapon actually used by player")]
+    [Tooltip("Gameobject instance of player`s weapon.")]
+    public GameObject weapon;
+
+    [Tooltip("Script of weapon.")]
+    private IWeapon actualWeapon;
+
+    [Tooltip("If false: it will have instant rotation.")]
+    [SerializeField] bool delayedRotation;
+
+    [Tooltip("If delayed rotation: speed of rotation in degress per second.")]
+    [SerializeField] float rotationSpeed = 50f;
+
+    [Tooltip("Info about Camera.")]
+    private Camera cam;
+
+    [Tooltip("Mouse Position")]
+    private Vector2 mousePos;
+
+
+    [SerializeField] Interface ui;
     // Start is called before the first frame update
     void Awake()
     {
-
+        cam = Camera.main;
         numbers = new int[] { 1, 3 };
         StartCoroutine(RandomNumbersGo());
 
@@ -38,13 +55,9 @@ public class WeaponAiming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        if (numbers[0] != numbers[1])
-        {
-            if(Input.GetKeyDown(KeyCode.Q)) SetWeapon(0);
-            if (Input.GetKeyDown(KeyCode.E)) SetWeapon(1);
-        }
+
+        HandleInput();
 
         if (Input.GetButton("Fire1"))
         {
@@ -52,9 +65,24 @@ public class WeaponAiming : MonoBehaviour
         }
     }
 
+    private void HandleInput()
+    {
+        if (numbers[0] != numbers[1])
+        {
+            if (Input.GetKeyDown(KeyCode.Q)) SetWeapon(0);
+            if (Input.GetKeyDown(KeyCode.E)) SetWeapon(1);
+        }
+    }
+
     private void FixedUpdate()
     {
-        Vector2 lookDir = mousePos - new Vector2(transform.position.x, transform.position.y);
+        RotateWeapon();
+
+    }
+
+    private void RotateWeapon()
+    {
+        Vector2 lookDir = mousePos - (Vector2)transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         if (!delayedRotation)
         {
@@ -65,7 +93,6 @@ public class WeaponAiming : MonoBehaviour
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, q, Time.deltaTime * rotationSpeed);
         }
-        
     }
 
     void SetWeapon(int number)
