@@ -148,7 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
-  hitEffect: {fileID: 2394702600697488934, guid: ab4785dae2a3c3d4d8f7354adbd0a4e6, type: 3}
+  hitEffects:
+  - {fileID: 2394702600697488934, guid: b33f65f329c9eff4bb63b12cd38e7c78, type: 3}
+  - {fileID: 2394702600697488934, guid: 6dbb80e044ec34b4392bc7533694a870, type: 3}
   damage: 15
   kickbackForce: 1000
   isDestroyedAfterTouch: 1

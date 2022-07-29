@@ -7,8 +7,8 @@ public class BulletMovement : MonoBehaviour
     [Tooltip("It describes, how long does bullet exist after spawn.")]
     public float lifeTime = 5f;
 
-    [Tooltip("Particle effect that appears when bullet hit something.")]
-    public GameObject hitEffect;
+    [Tooltip("Particle effects that appear when bullet hit something.")]
+    public GameObject[] hitEffects;
 
     [Tooltip("Damage that bullet can give to object that it hit.")]
     public float damage = 10;
@@ -28,7 +28,7 @@ public class BulletMovement : MonoBehaviour
     {
         if (collision.transform.CompareTag("Wall"))
         {
-            Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Instantiate(hitEffects[0], transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
@@ -36,7 +36,7 @@ public class BulletMovement : MonoBehaviour
         {
             HitEventData tempHitEventData = new(collision.gameObject, gameObject, damage, transform.right * kickbackForce);
             RogueDicedEvents.hitEvent.Invoke(tempHitEventData);
-            Instantiate(hitEffect, transform.position, Quaternion.identity);
+            Instantiate(hitEffects[1], transform.position, Quaternion.identity);
 
             if (isDestroyedAfterTouch)
             {
