@@ -5,26 +5,42 @@ using UnityEngine.SceneManagement;
 
 public class CameraMovement : MonoBehaviour
 {
-    public Transform target;
+    [Tooltip("Target of camera.")]
+    [SerializeField] Transform target;
 
-    public float lerpCoefficient = 10f;
-    public float centerCoefficient = 1f / 3f;
-    public float randShakeCoef = 0.2f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Tooltip("It defines part of distance between target and mouse that camera will follow.\0 means camera on target; \n1 means camera on mouse.")]
+    [Range(0, 1)]
+    [SerializeField] float centerCoefficient = 1f / 3f;
 
-    // Update is called once per frame
+    [Tooltip("It defines strength that camera will follow target.")]
+    [SerializeField] float lerpCoefficient = 10f;
+
+    [Tooltip("It defines how big shake does camera have.")]
+    [SerializeField] float shakeCoef = 0.2f;
+
+
     void Update()
     {
-        if(target!= null)
+        SetCameraPosition();
+
+        if (Input.GetKeyDown("r"))
         {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 centerPosition = target.position + (mousePosition - target.position) * centerCoefficient;
-            Vector2 randomShakeVector = new Vector2(Random.Range(-randShakeCoef, randShakeCoef), Random.Range(-randShakeCoef, randShakeCoef));
-            Vector3 newPosition = new Vector3(centerPosition.x + randomShakeVector.x, centerPosition.y + randomShakeVector.y, -10);
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    void SetCameraPosition()
+    {
+        if (target != null)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            //Get Position between target and mouse;
+            Vector3 targetMousePosition = target.position + (mousePosition - target.position) * centerCoefficient;
+
+
+            Vector2 shakeVector = new(Random.Range(-shakeCoef, shakeCoef), Random.Range(-shakeCoef, shakeCoef));
+            Vector3 newPosition = new(targetMousePosition.x + shakeVector.x, targetMousePosition.y + shakeVector.y, -10);
 
             transform.position = Vector3.Lerp(transform.position, newPosition, lerpCoefficient * Time.deltaTime);
         }
@@ -32,12 +48,8 @@ public class CameraMovement : MonoBehaviour
         {
             StartCoroutine(BackToMenu());
         }
-
-        if (Input.GetKeyDown("r"))
-        {
-            SceneManager.LoadScene(1);
-        }
     }
+
 
     IEnumerator BackToMenu()
     {

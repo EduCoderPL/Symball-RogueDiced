@@ -114,5 +114,4 @@ public class Interface : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-
 }

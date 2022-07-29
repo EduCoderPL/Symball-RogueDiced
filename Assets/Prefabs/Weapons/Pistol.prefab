@@ -131,5 +131,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 487453443705103067, guid: 0a7a15271241531449cc2557d2b8033f, type: 3}
   isAutoFire: 0
-  coolDown: 0.3
+  coolDown: 0.2
   bulletForce: 800
