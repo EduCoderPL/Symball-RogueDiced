@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class FireRailGun : MonoBehaviour, IWeapon
 {
+    public AudioSource shootAudioEffect;
     public GameObject bulletPrefab;
     public bool isAutoFire;
     public float coolDown = 1f;
