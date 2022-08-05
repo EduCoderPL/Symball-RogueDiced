@@ -8,18 +8,13 @@ public class RollDices : MonoBehaviour
     public float timeToRandomize = 30f;
 
     [SerializeField] int[] numbers;
-    // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine(RandomNumbersGo());
         RogueDicedEvents.rollDiceEvent.Invoke(new RollDiceEventData(numbers));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     IEnumerator RandomNumbersGo()
     {
