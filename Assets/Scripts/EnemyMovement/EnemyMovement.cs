@@ -27,6 +27,10 @@ public class EnemyMovement : MonoBehaviour, IEnemy
         if (target == null)
         {
             target = GameObject.Find("Player").transform;
+            if (target == null)
+            {
+                target = Camera.main.transform;
+            }
         }
 
         isShocked = false;

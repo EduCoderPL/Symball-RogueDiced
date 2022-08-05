@@ -426,11 +426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19e83f7ba57ca4499e29f944acb04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectAudio: {fileID: 48103759}
   moveSpeed: 30
   dodgeTrail: {fileID: 756627743}
   dodgeCooldownTime: 5
   dodgeDistance: 75
-  hitEffectAudio: {fileID: 48103759}
 --- !u!61 &48103755
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3193,12 +3193,11 @@ MonoBehaviour:
   - {fileID: 1552535883053523490, guid: 66218e9fd0e75bc46802bd7a40e7536f, type: 3}
   - {fileID: 1552535883053523490, guid: e423fc8457bb4784bb708addacce78ea, type: 3}
   - {fileID: 1552535883053523490, guid: 9fb958e7395ae464fa384790a97a7301, type: 3}
-  cam: {fileID: 519420031}
   activeWeapons:
   - {fileID: 7528816072661075860, guid: 32231675bf7db4e43894dd5fa9859322, type: 3}
   - {fileID: 1552535883053523490, guid: 4e9a8e22c88a8484383ed791b7cc335d, type: 3}
-  delayedRotation: 0
   weapon: {fileID: 0}
+  delayedRotation: 0
   rotationSpeed: 50
   ui: {fileID: 1920331766}
 --- !u!212 &785336166
@@ -5760,6 +5759,7 @@ GameObject:
   - component: {fileID: 1920331766}
   - component: {fileID: 1920331767}
   - component: {fileID: 1920331768}
+  - component: {fileID: 1920331769}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5907,6 +5907,20 @@ MonoBehaviour:
   volumeMusicSlider: {fileID: 394668544}
   volumeSoundSlider: {fileID: 362234298}
   audioMixer: {fileID: 24100000, guid: 5935d327a5b600e49a2185c1b651b768, type: 2}
+--- !u!114 &1920331769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920331761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f322ecfa176d11408ffb8f788caf6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToRandomize: 15
+  numbers: 0100000003000000
 --- !u!1001 &1947501520
 PrefabInstance:
   m_ObjectHideFlags: 0

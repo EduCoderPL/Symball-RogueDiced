@@ -5,9 +5,10 @@ using UnityEngine.Events;
 
 public static class RogueDicedEvents
 {
-    public static UnityEvent rollDice = new();
+    public static RollDiceEvent rollDiceEvent = new();
     public static HitEvent hitEvent = new();
     public static UnityEvent killEnemyEvent  = new();
+    public static UnityEvent rollInfoEvent = new();
 }
 
 public class HitEvent : UnityEvent<HitEventData> { }
@@ -35,5 +36,17 @@ public class KillEventData
     public KillEventData(GameObject victim)
     {
         this.victim = victim;
+    }
+}
+
+public class RollDiceEvent : UnityEvent<RollDiceEventData> { }
+
+public class RollDiceEventData
+{
+    public int[] weaponsNumbers;
+
+    public RollDiceEventData(int[] weapons)
+    {
+        this.weaponsNumbers = weapons;
     }
 }

@@ -25,7 +25,7 @@ public class Interface : MonoBehaviour
     private float playerHP;
 
 
-    public static bool gameIsPaused = false;
+    public static bool isGamePaused = false;
     public GameObject pauseMenuUI;
 
     private float estimatedTimeToRoll;
@@ -37,9 +37,9 @@ public class Interface : MonoBehaviour
 
     void Awake()
     {
-        RogueDicedEvents.rollDice.AddListener(SetImages);
+        RogueDicedEvents.rollDiceEvent.AddListener(SetImages);
         RogueDicedEvents.killEnemyEvent.AddListener(AddPoints);
-        RogueDicedEvents.rollDice.Invoke();
+        RogueDicedEvents.rollInfoEvent.AddListener(ShowRollInfo);
         textPoints = objectPoints.GetComponent<TextMeshProUGUI>();
         textHp = objectHp.GetComponent<TextMeshProUGUI>();
         textDice = objectDiceText.GetComponent<TextMeshProUGUI>();
@@ -60,7 +60,7 @@ public class Interface : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            if (gameIsPaused)
+            if (isGamePaused)
             {
                 Resume();
             }
@@ -70,20 +70,17 @@ public class Interface : MonoBehaviour
             }
             
         }
-
-
-
     }
 
     
 
-    public void SetImages()
+    public void SetImages(RollDiceEventData data)
     {
         for (int i = 0; i<2; i++)
         {
-            actualDicesImage[i].sprite = diceImages[WeaponAiming.numbers[i] - 1];
+            actualDicesImage[i].sprite = diceImages[data.weaponsNumbers[i] - 1];
         }
-        estimatedTimeToRoll = Time.time + WeaponAiming.timeToRandomize;
+        estimatedTimeToRoll = Time.time + 30;
         objectDiceText.SetActive(false);
 
     }
@@ -98,20 +95,26 @@ public class Interface : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        gameIsPaused = true;
+        isGamePaused = true;
     }
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        gameIsPaused = false ;
+        isGamePaused = false ;
     }
 
     public void Menu()
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
+    }
+
+    public void ShowRollInfo()
+    {
+        estimatedTimeToRoll = Time.time + 3;
+        objectDiceText.SetActive(true);
     }
 
 }

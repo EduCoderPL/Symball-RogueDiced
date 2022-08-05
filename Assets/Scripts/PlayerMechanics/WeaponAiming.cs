@@ -14,9 +14,6 @@ public class WeaponAiming : MonoBehaviour
     [Tooltip("Numbers of active weapons.")]
     public static int[] numbers;
 
-    [Tooltip("Randomize weapon cooldown.")]
-    public static float timeToRandomize = 15f;
-
     [Header("Weapon actually used by player")]
     [Tooltip("Gameobject instance of player`s weapon.")]
     public GameObject weapon;
@@ -43,13 +40,14 @@ public class WeaponAiming : MonoBehaviour
     {
         cam = Camera.main;
         numbers = new int[] { 1, 3 };
-        StartCoroutine(RandomNumbersGo());
-
 
         activeWeapons[0] = listOfWeapons[numbers[0] - 1];
         activeWeapons[1] = listOfWeapons[numbers[1] - 1];
 
         SetWeapon(0);
+
+        RogueDicedEvents.rollDiceEvent.AddListener(ChooseRandomWeapons);
+
     }
 
     // Update is called once per frame
@@ -104,26 +102,18 @@ public class WeaponAiming : MonoBehaviour
         actualWeapon = weapon.GetComponent<IWeapon>();
     }
 
-
-    IEnumerator RandomNumbersGo()
+    void ChooseRandomWeapons(RollDiceEventData data)
     {
-        while (true)
+        for (int i = 0; i< numbers.Length; i++)
         {
-            yield return new WaitForSeconds(timeToRandomize - 3);
-            ui.objectDiceText.SetActive(true);
-            yield return new WaitForSeconds(3);
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                numbers[i] = Random.Range(1, 7);
-                activeWeapons[i] = listOfWeapons[numbers[i] - 1];
-            }
-            RogueDicedEvents.rollDice.Invoke();
-            SetWeapon(Random.Range(0, 2));
-
+            activeWeapons[i] = listOfWeapons[data.weaponsNumbers[i] - 1];
         }
-
+        SetWeapon(Random.Range(0, numbers.Length));
     }
+
+
+
+
 
 
 }
